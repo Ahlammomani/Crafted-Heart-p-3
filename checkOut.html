@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Info</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="checkOut.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+<header>
+    <div class="top_header">
+        <div class="container">
+            <a href="#" class="logo"><img src="crf.png" alt=""></a>
+            <form action="product.html" class="search_box" id="searchForm">
+                <div class="select_box">
+                    <select id="category" name="category">
+                        <option value="All Categories">All Categories</option>
+                        <option value="Candles Gift">Candles Gift</option>
+                        <option value="Home Decor Gift">Home Decor Gift</option>
+                        <option value="Wool Gift">Wool Gift</option>
+                        <option value="Embroidery Gift">Embroidery Gift</option>
+                    </select>
+                </div>
+                <input type="text" name="search" id="search" placeholder="Search for Categories" required>
+                <button type="submit" id="search button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <div id="searchResults"></div>
+            <div class="header_icons">
+                <div class="icon">
+                    <a href="userProfile.html">
+                        <i class="fa-solid fa-user" style="color: #C4C1E4;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_header">
+        <div class="container">
+            <nav class="nav">
+                <ul class="nav_links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./products/index.html">Gifts</a></li>
+                    <li><a href="./about.html">About us</a></li>
+                    <li><a href="./contact.html">Contact us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<div id="welcome-message"></div>
+
+<div class="container1">
+    <h2>Delivery info</h2>
+    <div class="delivery-options">
+        <label>
+            <input type="radio" name="delivery" checked>
+            <span>Delivery</span>
+            <small>We will deliver by aramex</small>
+        </label>
+        <label>
+            <input type="radio" name="delivery">
+            <span>Pick-up</span>
+            <small>Come to our office to somewhere</small>
+        </label>
+    </div>
+    <form class="delivery-form" id="delivery-form">
+        <div class="form-group">
+            <label for="city">City*</label>
+            <select id="city" required>
+                <option value="">Select City</option>
+                <option value="Amman">Amman</option>
+                <option value="Zarqaa">Zarqaa</option>
+                <option value="Aqaba">Aqaba</option>
+                <option value="Ajluon">Ajluon</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="area">Area*</label>
+            <input type="text" id="area" placeholder="Type here" required>
+        </div>
+        <div class="form-group">
+            <label for="street">Street*</label>
+            <input type="text" id="street" placeholder="Type here" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="house">House</label>
+                <input type="text" id="house" placeholder="Type here">
+            </div>
+            <div class="form-group">
+                <label for="building">Building</label>
+                <input type="text" id="building" placeholder="Type here">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="postal-code">Postal code</label>
+                <input type="text" id="postal-code" placeholder="Type here">
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" placeholder="Type here">
+            </div>
+        </div>
+        <h3>Payment</h3>
+        <div class="payment-options">
+            <label>
+                <input type="radio" name="payment">
+                <span>Cash</span>
+            </label>
+            <label>
+                <input type="radio" name="payment" checked>
+                <span>Credit Card</span>
+            </label>
+        </div>
+        <div class="info-box">
+            Some information or instruction
+        </div>
+        <div class="credit-card" id="credit-card">
+            <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" id="creditCard" required>
+            <input type="text" placeholder="dd/yy" id="expiryDate" required>
+            <input type="text" placeholder="cvc" id="cvc" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<footer class="text-center text-lg-start">
+    <!-- Footer content here -->
+</footer>
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAC2zpAE0YqT_zQG1zwYjmjgBiKjDfvlA8",
+        authDomain: "crafted-heart.firebaseapp.com",
+        projectId: "crafted-heart",
+        storageBucket: "crafted-heart.firebasestorage.app",
+        messagingSenderId: "356981294414",
+        appId: "1:356981294414:web:ea3a6c8e9dd59df7728a1f",
+        measurementId: "G-PQ9WCXTS0L"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // Form submission handler
+    document.getElementById("delivery-form").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        // Get form values
+        const city = document.getElementById("city").value;
+        const area = document.getElementById("area").value;
+        const street = document.getElementById("street").value;
+        const house = document.getElementById("house").value;
+        const building = document.getElementById("building").value;
+        const postalCode = document.getElementById("postal-code").value;
+        const zip = document.getElementById("zip").value;
+        const creditCard = document.getElementById("creditCard").value;
+        const expiryDate = document.getElementById("expiryDate").value;
+        const cvc = document.getElementById("cvc").value;
+
+        // Validation rules
+        const creditCardRegex = /^[0-9]{16}$/;
+        const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+        const cvcRegex = /^[0-9]{3}$/;
+
+        // Validate required fields
+        if (!city || !area || !street || !creditCard || !expiryDate || !cvc) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill in all required fields!',
+            });
+            return;
+        }
+
+        // Validate credit card details
+        if (!creditCardRegex.test(creditCard) || !expiryDateRegex.test(expiryDate) || !cvcRegex.test(cvc)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Payment Details',
+                text: 'Please check your credit card information and try again.',
+            });
+            return;
+        }
+
+        // Save to Firestore
+        try {
+            await addDoc(collection(db, "checkout"), {
+                city: city,
+                area: area,
+                street: street,
+                house: house,
+                building: building,
+                postalCode: postalCode,
+                zip: zip,
+                creditCard: creditCard,
+                expiryDate: expiryDate,
+                cvc: cvc,
+                timestamp: new Date().toISOString()
+            });
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Your delivery information has been submitted successfully!',
+            }).then(() => {
+                window.location.href = "index.html"; // Redirect to the homepage
+            });
+        } catch (error) {
+            console.error("Error adding document: ", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while submitting your information. Please try again.',
+            });
+        }
+    });
+
+    // Handle user authentication state
+    onAuthStateChanged(auth, (user) => {
+        const welcomeMessageElement = document.getElementById("welcome-message");
+        if (user) {
+            fetchAndDisplayUserName(user.uid);
+        } else {
+            welcomeMessageElement.textContent = "";
+        }
+    });
+
+    // Fetch and display user's name
+    async function fetchAndDisplayUserName(uid) {
+        try {
+            const userDocRef = doc(db, "users", uid);
+            const userDoc = await getDoc(userDocRef);
+            if (userDoc.exists()) {
+                const userName = userDoc.data().firstName;
+                document.getElementById("welcome-message").innerHTML = `Welcome <span id="user-name">${userName}</span>!`;
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    }
+</script>
+</body>
+</html>
